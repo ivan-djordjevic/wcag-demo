@@ -1,0 +1,303 @@
+<html>
+	<head>
+	<title>Web accessibility examples - Wrong</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+	<div class="navbar navbar-expand-lg navbar-light bg-light"> <!-- navigation should be contained into "nav" element or contain role="navigation" in order to be parsed as a landmark by screen reader -->
+			<a class="navbar-brand" href="#">WCAG Demo</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+			<a class="nav-item nav-link active" href="#">Wrong</a>
+			<a class="nav-item nav-link" href="index.html">Right</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content"> <!-- main content should be contained into "main" element or contain role="main" in order to be parsed as a landmark by screen reader -->
+		<p class="h1">Web accessibility examples - Wrong</p> <!-- h1 class implements the h2 tag styles, but not the semantyc meaning -->
+
+		<section class="card">
+			<p class="card-header h2">Text input</p> <!-- h2 class implements the h2 tag styles, but not the semantyc meaning -->
+			<div class="card-body">
+				<label>
+					Enter your first name
+				</label>
+				<input type="text"> <!-- this input field is not properly labeled -->
+			</div>
+		</section>
+
+		<section class="card">
+			<p class="card-header h2">Native select</p> <!-- h2 class implements the h2 tag styles, but not the semantyc meaning -->
+			<div class="card-body">
+				<label>Choose your native option</label>
+				<select placeholder="Select..."> <!-- this select element is not properly labeled -->
+					<option>Select...</option>
+					<option value="1">Option 1</option>
+					<option value="2">Option 2</option>
+					<option value="3">Option 3</option>
+				</select>
+			</div>
+		</section>
+
+		<section class="card">
+			<p class="card-header h2">Custom Select</p> <!-- h2 class implements the h2 tag styles, but not the semantyc meaning -->
+			<div class="card-body">
+				<label>Choose your custom option</label>
+				<div class="dropdown selectbox d-inline" role="select">
+					<span class="btn btn-secondary dropdown-toggle"  data-toggle="dropdown" aria-owns="optionlist1" aria-haspopup="true" aria-expanded="false"> <!-- span element is not accessible by keyboard - it should have tabindex or be a button element -->
+						Select...
+					</span>
+					<div class="dropdown-menu">
+					<a class="dropdown-item" href="#action0">Select...</a>
+					<a class="dropdown-item" href="#action1">Option 1</a>
+					<a class="dropdown-item" href="#action2">Option 2</a>
+					<a class="dropdown-item" href="#action3">Option 3</a>
+					</div>
+				</div> 
+			</div>
+		</section>
+
+		<!-- <section class="card">
+			<p class="card-header h2">Bottstrap dropdown</p>
+			<div class="card-body">
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Dropdown button
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="#action1">Action 1</a>
+					<a class="dropdown-item" href="#action2">Action 2</a>
+					<a class="dropdown-item" href="#action3">Action 3</a>
+					</div>
+				</div>
+			</div>
+		</section> -->
+		
+		<section class="card">	
+			<p class="card-header h2">Tree View</p> <!-- h2 class implements the h2 tag styles, but not the semantyc meaning -->
+			<div class="card-body">
+			<ul class="tree">
+				<li class="treenode"> <!-- list item is not accessible by keyboard if there is no tabindex -->
+					<span class="expcoll">+</span>
+					<a class="treelink" tabindex="-1" href="#">WCAG</a>
+					<ul class="treegroup" role="group">
+						<li class="treenode">
+							<span class="expcoll">+</span>
+							<a class="treelink" tabindex="-1" href="#" >Perceivable</a>
+							<ul class="treegroup" role="group">
+								<li class="treenode">
+									<span class="expcoll"></span>
+									<a class="treelink" tabindex="-1" href="#">Text Alternatives</a>
+									<ul class="treegroup" role="group">
+										<li class="treenode">
+											<a class="treelink" tabindex="-1"  href="#"> Non-text Content</a>
+										</li>
+									</ul>
+								</li>
+								<li class="treenode">
+									<span class="expcoll"></span>
+									<a class="treelink" tabindex="-1"  href="#">Time-based Media</a>
+									<ul class="treegroup" role="group">
+										<li class="treenode">
+											<a class="treelink" tabindex="-1"  href="#"> Audio-only and Video-only (Prerecorded)</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1"  href="#"> Captions (Prerecorded)</a>
+										</li>
+										<li class="treenode" >
+											<a class="treelink" tabindex="-1" href="#"> Audio Description or Media Alternative (Prerecorded)</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#">  Captions (Live) </a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#"> Audio Description (Prerecorded)</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#"> Sign Language (Prerecorded)</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#"> Extended Audio Description (Prerecorded)</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1"  href="#"> Media Alternative (Prerecorded) </a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1"  href="#"> Audio-only (Live) </a>
+										</li>
+									</ul>
+								</li>
+								<li class="treenode">
+									<span class="expcoll"></span>
+									<a class="treelink" tabindex="-1" href="#">Adaptable</a>
+									<ul class="treegroup" role="group">
+										<li class="treenode">
+											<a class="treelink" tabindex="-1"  href="#">  Info and Relationships</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1"  href="#"> Meaningful Sequence</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#"> Sensory Characteristics</a>
+										</li>
+										<li class="treenode"  tabindex="0"role="treeitem" >
+											<a class="treelink" tabindex="-1" href="#">  Identify Common Purpose </a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1"  href="#">  Identify Purpose</a>
+										</li>
+									</ul>
+								</li>
+								<li class="treenode">
+									<span class="expcoll"></span>
+									<a class="treelink" tabindex="-1" href="#">Distinguishable</a>
+									<ul class="treegroup" role="group">
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#">Use of Color</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#"> Audio Control</a>
+										</li>
+										<li class="treenode" >
+											<a class="treelink" tabindex="-1"  href="#">Contrast (Minimum)</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#">  Resize text </a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#"> Images of Text</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#">  Contrast (Enhanced)</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#">  Low or No Background Audio</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" role="treeitem" href="#">  Visual Presentation</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#">  Images of Text (No Exception)</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#">  Reflow</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#">  Non-text Contrast</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#"> Text Spacing</a>
+										</li>
+										<li class="treenode">
+											<a class="treelink" tabindex="-1" href="#">  Content on Hover or Focus</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="treenode">
+							<span class="expcoll">+</span>
+							<a class="treelink" tabindex="-1"  href="#">Operable</a>
+							<ul class="treegroup" role="group">
+								<li class="treenode">
+									<a class="treelink" tabindex="-1"  href="#"> Keyboard Accessible</a>
+								</li>
+								<li class="treenode" >
+									<a class="treelink" tabindex="-1" href="#">Enough Time</a>
+								</li>
+								<li class="treenode">
+									<a class="treelink" tabindex="-1"  href="#">Seizures</a>
+								</li>
+								<li class="treenode" >
+									<a class="treelink" tabindex="-1" href="#">Navigable</a>
+								</li>
+								<li class="treenode">
+									<a class="treelink" tabindex="-1" href="#">Pointer Accessible</a>
+								</li>
+								<li class="treenode">
+									<a class="treelink" tabindex="-1"  href="#"> Additional sensor inputs</a>
+								</li>			
+							</ul>
+						</li>
+						<li class="treenode">
+							<span class="expcoll"></span>
+							<a class="treelink" tabindex="-1" href="#">Understandable</a>
+							<ul class="treegroup" role="group">
+								<li class="treenode" >
+									<a class="treelink" tabindex="-1" href="#">Readable</a>
+								</li>
+								<li class="treenode">
+									<a class="treelink" tabindex="-1" href="#">Predictable</a>
+								</li>
+								<li class="treenode">
+									<a class="treelink" tabindex="-1"  href="#"> Input Assistance</a>
+								</li>
+							</ul>
+						</li>
+						<li class="treenode">
+							<span class="expcoll"></span>
+							<a class="treelink" tabindex="-1"  href="#">Robust</a>
+							<ul class="treegroup" role="group">
+								<li class="treenode">
+									<a class="treelink" tabindex="-1"  href="#">Compatible</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			</div>
+		</section>
+		
+		<section class="card">	
+			<p class="card-header h2">Modal example</p> <!-- h2 class implements the h2 tag styles, but not the semantyc meaning -->
+			<!-- Button trigger modal -->
+			<div class="card-body">
+				<span class="btn btn-primary" onclick="showModal()">
+					Show modal
+				</span>
+				<!-- <br>
+				<br><span role="button" class="btn btn-danger" onclick="showModal()">
+					Launch modal from span element (onclick)
+				</span> -->
+				<!-- 
+				<span role="button" tabindex="0" class="btn btn-danger" onkeydown="handleSpanKeydown(event)">
+					Launch modal from span element (onkeydown)
+				</span> -->
+					
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+								<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								Woohoo, you're reading this text in a modal!
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<script src="js/select.js"></script>
+	<script src="js/modal-basic.js"></script>
+	
+	</body>
+	</html>
